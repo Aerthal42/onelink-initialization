@@ -17,11 +17,14 @@
             var custom2 = {paramKey: "ad_name", keys: ["utm_ad"]};
             var custom3 = {paramKey: "adset_name", keys: ["utm_adset"]};
             
-            // Параметры необходимые для мэтчинга пользователей с facebook
+            // Параметры необходимые для мэтчинга пользователей с facebook. Если не используется источник facebook, тогда afSub1-4 параметры не нужны
             var afSub1 = {keys: ["fbclid"]};
             var afSub2 = {keys:[], defaultValue: getCookie("_fbc")};
             var afSub3 = {keys:[], defaultValue: getCookie("_fbp")};
             var afSub4 = {keys:[], defaultValue: window.navigator.userAgent};
+         
+            // Параметр необходимый для мэтчинга пользователей с tiktok. Если не используется источник tiktok, тогда afSub5 параметр не нужен
+          //var afSub5 = {keys: ["ttclid"]};
 
             // Генерация Onelink URL
             var result = window.AF_SMART_SCRIPT.generateOneLinkURL({
@@ -29,10 +32,14 @@
               afParameters:{
                 mediaSource: mediaSource,
                 campaign: campaign,
+                // Если не используется площадка facebook для рекламы, тогда afSub1-4 параметры не нужны
                 afSub1: afSub1,
                 afSub2: afSub2,
                 afSub3: afSub3,
                 afSub4: afSub4,
+             
+             // afSub5: afSub5,
+                
                 afCustom: [
                   custom1,
                   custom2,
